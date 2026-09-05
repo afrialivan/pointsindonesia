@@ -14,10 +14,6 @@ export default function CtaSection() {
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
-
-  // const whatsappUrl =
-  //   'https://wa.me/6282345555423?text=Halo%20Points%20Indonesia,%20saya%20ingin%20konsultasi%20dan%20memulai%20project%20pembuatan%20apparel/seragam.';
-
   return (
     <section className="py-16 sm:py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">

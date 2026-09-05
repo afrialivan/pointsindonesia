@@ -81,7 +81,7 @@ export default function PortfolioPage() {
       : portfolioItems.filter((item) => item.categoryKey === activeCategory);
 
   return (
-    <main className="pt-22.5 bg-white">
+    <main className="lg:pt-22.5 pt-10 bg-white">
       {/* 1. HERO SECTION */}
       <section className="py-16 sm:py-20 bg-[#F4F7FF] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
