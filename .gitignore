@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore build/zip files
+*.zip
+app.zip
+
+# Ignore heavy PDF media (pindahkan ke cloud storage jika perlu)
+public/docs/*.pdf
