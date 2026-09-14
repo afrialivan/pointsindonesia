@@ -62,7 +62,7 @@ export default function PdfViewerSection({ pdfUrl }: PdfViewerSectionProps) {
                 </svg>
               </button>
               
-              <span className="text-xs sm:text-sm font-semibold text-[#0B1437] min-w-[80px] text-center select-none">
+              <span className="text-xs sm:text-sm font-semibold text-[#0B1437] min-w-20 text-center select-none">
                 {isLoading ? '...' : `${pageNumber} / ${numPages}`}
               </span>
 
