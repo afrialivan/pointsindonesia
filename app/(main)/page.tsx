@@ -5,27 +5,27 @@ import dynamic from 'next/dynamic';
 // Komponen Above-the-fold diimpor langsung
 import Hero from "@/components/home/Hero";
 import HeroText from "@/components/home/HeroText";
-import LogoMitra from "@/components/home/LogoMitra";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
+import ProductCategory from '@/components/home/ProductCategory';
 
-// Komponen Below-the-fold diimpor secara lazy / dynamic
-const LocationSection = dynamic(() => import("@/components/home/LocationSection"), { ssr: false });
+// Komponen Below-the-fold diimpor secara lazy / dynamic (TANPA ssr: false)
+const LogoMitra = dynamic(() => import("@/components/home/LogoMitra"));
+const WhyChooseUs = dynamic(() => import("@/components/home/WhyChooseUs"));
+const LocationSection = dynamic(() => import("@/components/home/LocationSection"));
 const PortfolioPreview = dynamic(() => import("@/components/home/PortfolioPreview"));
 const Process = dynamic(() => import("@/components/home/Process"));
-const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
 const CtaSection = dynamic(() => import("@/components/home/CtaSection"));
 
 const Home = () => {
   return (
     <main>
       <Hero />
+      <ProductCategory />
       <HeroText />
       <LogoMitra />
       <WhyChooseUs />
       <LocationSection />
       <PortfolioPreview />
       <Process />
-      <Testimonials />
       <CtaSection />
     </main>
   );

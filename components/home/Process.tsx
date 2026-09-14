@@ -16,7 +16,7 @@ export default function Process() {
       number: '01',
       title: 'Siapkan Desain',
       description:
-        'Siapkan desain Anda format JPG/PNG/CDR/PSD. Jika belum punya, kami bisa membantu untuk proses desain.',
+        'Siapkan desain Kamu dengan format JPG/PNG/CDR/PSD. Jika belum punya, kami bisa membantu untuk proses desain.',
       icon: (
         <svg className="w-6 h-6 text-[#155EEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -27,7 +27,7 @@ export default function Process() {
       number: '02',
       title: 'Kirim Desain',
       description:
-        'Kirim desain melalui email atau WhatsApp. Bisa juga desain dibawakan langsung ke kantor kami.',
+        'Kirim desain melalui email atau WhatsApp. Bisa juga desain dibawakan langsung ke toko kami.',
       icon: (
         <svg className="w-6 h-6 text-[#155EEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -60,7 +60,7 @@ export default function Process() {
       number: '05',
       title: 'Pengiriman',
       description:
-        'Orderan yang telah selesai dikirim menggunakan jasa pengiriman, atau Anda bisa datang langsung ke kantor.',
+        'Orderan yang telah selesai dikirim menggunakan jasa pengiriman, atau Kamu bisa datang langsung ke toko.',
       icon: (
         <svg className="w-6 h-6 text-[#155EEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z" />
@@ -107,10 +107,10 @@ export default function Process() {
             Cara Pemesanan
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0B1437] leading-tight mb-4">
-            5 Langkah Mudah Memesan di Points
+            5 Langkah Mudah Memesan di Points Indonesia
           </h2>
           <p className="text-base sm:text-lg text-[#667085]">
-            Alur kerja praktis dan transparan untuk mewujudkan produk konveksi sesuai keinginan Anda.
+            Alur kerja praktis dan transparan untuk mewujudkan produk konveksi sesuai keinginan Kamu.
           </p>
         </motion.div>
 
@@ -135,7 +135,7 @@ export default function Process() {
                   <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
                     {step.icon}
                   </div>
-                  <span className="font-display font-extrabold text-2xl bg-linear-to-r from-[#155EEF] to-[#6941C6] bg-clip-text text-transparent">
+                  <span className="font-display font-extrabold text-2xl bg-primary bg-clip-text text-transparent">
                     {step.number}
                   </span>
                 </div>

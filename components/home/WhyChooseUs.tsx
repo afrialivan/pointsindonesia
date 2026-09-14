@@ -5,12 +5,12 @@ import { motion, Variants } from 'framer-motion';
 
 export default function WhyChooseUs() {
   const points = [
-    'Kualitas bahan premium dan tahan lama',
-    'Proses produksi cepat dan tepat waktu',
-    'Harga kompetitif untuk semua kalangan',
-    'Customisasi design sesuai kebutuhan',
-    'Layanan konsultasi gratis',
-    'After-sales support terpercaya (Garansi)',
+    'Bahan Baku yang Premium',
+    'Proses Produksi yang Cepat',
+    'Garansi Produk',
+    'Harga yang Kompetitif untuk Berbagai Kalangan',
+    'Free Pengerjaan Desain Sesuai Custom Klien',
+    'Layanan Konsultasi Gratis',
   ];
 
   // Menambahkan tipe Variants eksplisit agar aman dari galat TypeScript
@@ -60,13 +60,7 @@ export default function WhyChooseUs() {
 
             {/* Paragraph Content */}
             <p className="text-[#667085] text-base sm:text-lg leading-relaxed">
-              <strong className="text-[#0B1437]">Points Indonesia</strong> adalah One Stop Convection yang memudahkan
-              setiap kebutuhan konveksi perusahaan Anda. Dari desain hingga
-              hasil jadi, semua kami tangani dalam satu alur terpadu yang efisien
-              dan presisi. Sebagai konveksi terpercaya di Indonesia Timur, Points
-              hadir menghadirkan solusi produksi dari seragam kerja, PDH, PDL,
-              hingga apparel custom dengan berbagai gaya terbaru dan kualitas
-              yang menjahit kepercayaan di setiap detailnya.
+              <strong className="text-[#0B1437]">Points Indonesia</strong> merupakan perusahaan percetakan apparel, konveksi & merchandise di indonesia timur, yg berfokus pada kebutuhan klien, dengan harga yang kompetitif, kualitas terjamin, pelayanan yang ramah & profesional. Points Indonesia dapat membantu mewujudkan produk yg anda inginkan karna di Points Indonesia semua di tangani dari awal desain sampai akhir pengiriman dalam satu sistem yang efektif dan efisien.
             </p>
           </motion.div>
 
@@ -102,7 +96,7 @@ export default function WhyChooseUs() {
                 </div>
 
                 {/* Text Point */}
-                <span className="font-display font-medium text-base sm:text-lg text-[#0B1437]">
+                <span className="font-display font-medium text-base sm:text-lg text-justify text-[#0B1437]">
                   {point}
                 </span>
               </motion.div>

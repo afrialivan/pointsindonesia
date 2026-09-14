@@ -9,7 +9,8 @@ export default function LocationSection() {
     'https://maps.google.com/maps?q=-5.1406087,119.4854023&hl=id&z=17&output=embed';
 
   const googleMapsShareLink =
-    'https://www.google.com/maps?q=-5.1406087,119.4854023';
+    // 'https://www.google.com/maps?q=-5.1406087,119.4854023';
+    'https://www.google.com/maps?q=-5.1406291,119.4855465,21';
 
   return (
     <section className="py-16 sm:py-20 bg-[#F7F9FC] overflow-hidden">
@@ -25,13 +26,13 @@ export default function LocationSection() {
         >
           <span className="inline-flex items-center gap-2 font-display text-xs font-bold tracking-widest uppercase text-[#155EEF] bg-[#EEF2FF] px-4 py-1.5 rounded-full mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#155EEF]" />
-            Lokasi Workshop
+            Lokasi Toko & Kantor
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0B1437] leading-tight mb-4">
             Lokasi Points Indonesia
           </h2>
           <p className="text-base sm:text-lg text-[#667085]">
-            Kunjungi workshop kami untuk diskusi sampel bahan dan pemesanan secara langsung.
+            Kunjungi toko & kantor kami untuk diskusi sampel, bahan dan pemesanan secara langsung.
           </p>
         </motion.div>
 
@@ -44,7 +45,7 @@ export default function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-[#E4E7EC] shadow-[0_4px_20px_rgba(11,20,55,0.04)] flex flex-col justify-between"
+            className="lg:col-span-5 order-2 lg:order-1 bg-white rounded-2xl p-6 sm:p-8 border border-[#E4E7EC] shadow-[0_4px_20px_rgba(11,20,55,0.04)] flex flex-col justify-between"
           >
             <div>
               <h3 className="font-display font-bold text-2xl text-[#0B1437] mb-6">
@@ -60,10 +61,10 @@ export default function LocationSection() {
                 </div>
                 <div>
                   <span className="block font-display font-bold text-sm text-[#0B1437] mb-1">
-                    Alamat Workshop
+                    Alamat Toko & Kantor
                   </span>
                   <p className="text-[#667085] text-sm leading-relaxed">
-                    Points Indonesia — Ruko HCC, Jl. Perintis Kemerdekaan Blk. A No.5, Tamalanrea Indah, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan 90245
+                    Points Indonesia — Ruko HCC, Jl. Perintis Kemerdekaan Blk. C No.5, Tamalanrea Indah, Kec. Tamalanrea, Kota Makassar, Sulawesi Selatan 90245
                   </p>
                 </div>
               </div>
@@ -99,7 +100,10 @@ export default function LocationSection() {
                     Hubungi Kami
                   </span>
                   <p className="text-[#667085] text-sm leading-relaxed">
-                    +62 821-2878-7270
+                    +62 821-2878-7270 (Admin 1)
+                  </p>
+                  <p className="text-[#667085] text-sm leading-relaxed">
+                    +62 823-5553-4970 (Admin 2)
                   </p>
                 </div>
               </div>
@@ -127,7 +131,7 @@ export default function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-            className="lg:col-span-7 h-105 lg:h-auto min-h-105 rounded-2xl overflow-hidden border border-[#E4E7EC] shadow-[0_4px_20px_rgba(11,20,55,0.04)] relative"
+            className="lg:col-span-7 order-1 lg:order-2 h-105 lg:h-auto min-h-105 rounded-2xl overflow-hidden border border-[#E4E7EC] shadow-[0_4px_20px_rgba(11,20,55,0.04)] relative"
           >
             <iframe
               src={mapEmbedUrl}

@@ -1,150 +1,217 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import LocationSection from '@/components/home/LocationSection';
+import Image from 'next/image';
+import { motion, Variants } from 'framer-motion';
 
 export default function AboutPage() {
-  const companyProfileUrl = '/docs/company-profile-points-indonesia.pdf';
-  const brandGuidelineUrl = '/docs/brand-guideline-points-indonesia.pdf';
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-  const [activePdf, setActivePdf] = useState<'company' | 'brand'>('company');
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  };
 
-  const currentPdfPath = activePdf === 'company' ? companyProfileUrl : brandGuidelineUrl;
-  const currentFileName = activePdf === 'company' ? 'Company Profile Points Indonesia' : 'Brand Guideline Logo Points Indonesia';
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const waLink =
+    'https://wa.me/6282128787270?text=Halo%20Points%20Indonesia,%20saya%20tertarik%20untuk%20berkolaborasi.';
 
   return (
-    <main className="lg:pt-22.5 pt-10 bg-white">
-      {/* 1. HERO SECTION */}
-      <section className="py-16 sm:py-24 bg-[#F4F7FF] overflow-hidden">
+    <main className="bg-white min-h-screen pt-20 lg:pt-24">
+      
+      {/* 1. HERO SECTION PERSIS SEPERTI GAMBAR ACUAN */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
+          
+          {/* Frame Container Gambar Melayang dengan Overlay */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="relative w-full h-[320px] sm:h-[420px] lg:h-[480px] rounded-2xl overflow-hidden shadow-2xl bg-[#0B1437] border border-[#E4E7EC] flex items-center justify-center text-center"
+          >
+            {/* Gambar Background Konveksi Unsplash */}
+            <Image
+              src="https://res.cloudinary.com/wxjrbpho/image/upload/v1789404865/about-hero.jpg"
+              alt="Workshop Konveksi Points Indonesia"
+              fill
+              priority
+              className="object-cover opacity-35"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            
+            {/* Overlay Gradient Gelap Khas Tapada/Points */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1437]/90 via-[#0B1437]/60 to-transparent" />
+
+            {/* Teks Judul Utama di Tengah Gambar */}
+            <div className="relative z-10 px-4 max-w-3xl mx-auto flex flex-col items-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase mb-2"
+              >
+                POINTS <span className="text-[#FFDE00]">INDONESIA</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-white/90 font-medium text-base sm:text-xl italic tracking-wide"
+              >
+                Easy on Us, Easy on Points
+              </motion.p>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* 2. PROFIL DESKRIPSI PERUSAHAAN (DENGAN GARIS PEMBATAS ATAS DAN BAWAH) */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
+          
+          <div className="py-8 border-y border-[#E4E7EC]">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              className="max-w-5xl mx-auto text-center space-y-4"
+            >
+              <motion.p
+                variants={itemVariants}
+                className="text-[#0B1437] font-semibold text-base sm:text-lg lg:text-xl leading-relaxed"
+              >
+                <strong className="text-[#155EEF]">CV. POINTS SUKSES INDONESIA</strong> dengan merek dagang <strong className="text-[#0B1437]">Points Indonesia</strong> adalah sebuah Perusahaan yang fokus bergerak dalam bidang industri percetakan apparel, konveksi, dan merchandise. Points Indonesiaresmi beroperasi sejak 2019.
+              </motion.p>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-[#667085] text-sm sm:text-base lg:text-lg leading-relaxed"
+              >
+                Tujuan utama diinisiasinya Points Indonesia merupakan wujud pengembangan industri serta bisnis percetakan apparel dan konveksi di Kota Makassar, bahkan Indonesia Timur.
+              </motion.p>
+            </motion.div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. VISI & MISI SECTION (2 KOLOM CARDS DENGAN UI BADGE KHAS) */}
+      <section className="py-16 sm:py-20 bg-[#F4F7FF] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 relative z-10">
+          
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0B1437] leading-tight">
+              Visi &amp; Misi Perusahaan
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+            
+            {/* VISION CARD */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E4E7EC] shadow-[0_10px_30px_rgba(11,20,55,0.05)] hover:shadow-[0_16px_40px_rgba(21,94,239,0.12)] transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <span className="font-display font-black italic text-3xl sm:text-4xl text-[#155EEF]">
+                    Our
+                  </span>
+                  <span className="font-display font-black italic text-3xl sm:text-4xl text-[#0B1437] bg-[#FFDE00] px-3 py-1 rounded-lg">
+                    Vision
+                  </span>
+                </div>
+
+                <p className="text-[#0B1437] font-medium text-lg sm:text-xl leading-relaxed italic">
+                  &ldquo;Menjadi perusahaan konveksi No. 1 di Sulawesi yang berfokus ke kebutuhan pelanggan dengan kualitas yang terjamin, pelayanan yang memuaskan serta pengelolaan bisnis yang profesional dan berkelanjutan.&rdquo;
+                </p>
+              </div>
+
+            </motion.div>
+
+            {/* MISSION CARD */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E4E7EC] shadow-[0_10px_30px_rgba(11,20,55,0.05)] hover:shadow-[0_16px_40px_rgba(21,94,239,0.12)] transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <span className="font-display font-black italic text-3xl sm:text-4xl text-[#155EEF]">
+                    Our
+                  </span>
+                  <span className="font-display font-black italic text-3xl sm:text-4xl text-[#0B1437] bg-[#FFDE00] px-3 py-1 rounded-lg">
+                    Mission
+                  </span>
+                </div>
+
+                <p className="text-[#0B1437] font-medium text-lg sm:text-xl leading-relaxed italic">
+                  &ldquo;Menciptakan standar bisnis proses yang optimal &amp; pengelolaan sumber daya yang profesional.&rdquo;
+                </p>
+              </div>
+
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* 5. CALL TO ACTION (CTA BANNER) */}
+      <section className="py-16 sm:py-20 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="max-w-3xl text-left"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-[#0B1437] p-8 sm:p-12 text-center relative overflow-hidden border border-[#155EEF]/30 shadow-xl"
           >
-            <span className="inline-block font-display text-xs font-bold tracking-wider uppercase text-[#155EEF] bg-[#EEF2FF] px-4 py-2 rounded-full mb-6">
-              TENTANG KAMI
-            </span>
-            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#0B1437] leading-[1.15] tracking-tight mb-6">
-              Mengenal Lebih Dekat <span className="text-[#155EEF]">Points Indonesia</span>
-            </h1>
-            <p className="text-base sm:text-lg text-[#667085] leading-relaxed mb-8">
-              CV. Points Sukses Indonesia dengan merek dagang <strong className="text-[#0B1437]">Points Indonesia</strong> adalah perusahaan percetakan apparel, konveksi &amp; merchandise di Indonesia Timur.
+            <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-white mb-4">
+              Ingin Berkolaborasi atau Memulai Project Bersama Kami?
+            </h2>
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+              Hubungi tim Points Indonesia sekarang untuk konsultasi gratis mengenai kebutuhan konveksi, seragam, dan merchandise perusahaan Kamu.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <a
-                href={companyProfileUrl}
-                download="Company-Profile-Points-Indonesia.pdf"
-                className="inline-flex items-center gap-2.5 font-display font-semibold text-sm text-white px-6 py-3.5 rounded-xl bg-primary transition-colors shadow-[0_12px_28px_rgba(21,94,239,0.28)] hover:shadow-[0_16px_36px_rgba(21,94,239,0.38)]"
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display font-bold text-base text-white px-8 py-4 rounded-xl bg-primary-light shadow-lg hover:shadow-xl transition-all duration-200 inline-flex items-center gap-2"
               >
-                Unduh Company Profile (PDF)
+                HUBUNGI KAMI SEKARANG
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </a>
-
-              <a
-                href={brandGuidelineUrl}
-                download="Brand-Guideline-Points-Indonesia.pdf"
-                className="inline-flex items-center gap-2.5 font-display font-semibold text-sm text-[#0B1437] px-6 py-3.5 rounded-xl bg-white border border-[#E4E7EC] hover:bg-[#F7F9FC] transition-colors shadow-sm"
-              >
-                Unduh Brand Guideline (PDF)
-              </a>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. DOKUMEN RESMI & PREVIEW */}
-      <section className="py-16 sm:py-20 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
-            <div>
-              <span className="inline-block font-display text-xs font-bold tracking-wider uppercase text-[#155EEF] bg-[#EEF2FF] px-4 py-2 rounded-full mb-4">
-                DOKUMEN RESMI
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#0B1437] leading-tight">
-                Company Profile &amp; Brand Guideline
-              </h2>
-            </div>
-
-            {/* Switcher Tab */}
-            <div className="flex items-center gap-2 bg-white p-1.5 rounded-xl border border-[#E4E7EC] shrink-0">
-              <button
-                onClick={() => setActivePdf('company')}
-                className={`font-display text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all ${
-                  activePdf === 'company'
-                    ? 'bg-[#155EEF] text-white shadow-sm'
-                    : 'text-[#667085] hover:text-[#0B1437]'
-                }`}
-              >
-                Company Profile
-              </button>
-              <button
-                onClick={() => setActivePdf('brand')}
-                className={`font-display text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all ${
-                  activePdf === 'brand'
-                    ? 'bg-[#155EEF] text-white shadow-sm'
-                    : 'text-[#667085] hover:text-[#0B1437]'
-                }`}
-              >
-                Brand Guideline Logo
-              </button>
-            </div>
-          </div>
-
-          {/* Area Preview Container */}
-          <motion.div
-            key={activePdf}
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="w-full h-95 sm:h-187.5 bg-white rounded-2xl overflow-hidden border border-[#E4E7EC] shadow-[0_4px_20px_rgba(11,20,55,0.06)] relative"
-          >
-            {isMobile ? (
-              /* Tampilan khusus Mobile (Ganti Preview PDF dengan Kartu Unduh Cepat agar HP tidak lag) */
-              <div className="w-full h-full p-8 flex flex-col items-center justify-center text-center bg-[#F4F7FF]">
-                <div className="w-16 h-16 rounded-2xl bg-[#EEF2FF] border border-[#155EEF]/20 flex items-center justify-center mb-4 text-[#155EEF]">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <h3 className="font-display font-bold text-lg text-[#0B1437] mb-2">
-                  {currentFileName}
-                </h3>
-                <p className="text-xs text-[#667085] max-w-xs mb-6">
-                  Dokumen berukuran besar (HD). Buka langsung atau unduh untuk melihat konten dengan lancar di perangkat Anda.
-                </p>
-                <a
-                  href={currentPdfPath}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-display font-semibold text-xs text-white px-6 py-3 rounded-xl bg-[#155EEF] shadow-sm hover:bg-[#0E3FB0] transition-colors"
-                >
-                  Buka / Unduh Berkas PDF ↗
-                </a>
-              </div>
-            ) : (
-              /* Tampilan Desktop (Iframe Native Browser) */
-              <iframe
-                src={`${currentPdfPath}#toolbar=1&navpanes=0`}
-                title="PDF Preview"
-                className="w-full h-full border-0"
-              />
-            )}
-          </motion.div>
-        </div>
-      </section>
-
-      <LocationSection />
     </main>
   );
 }

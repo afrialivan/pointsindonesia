@@ -37,7 +37,7 @@ p { line-height: 1.7; }
 
 a { text-decoration: none; }
 
-@keyframes marqueeReverse {
+/* @keyframes marqueeReverse {
   0% {
     transform: translateX(-100%);
   }
@@ -47,18 +47,52 @@ a { text-decoration: none; }
 }
 
 .animate-marquee-reverse {
-  animation: marqueeReverse 25s linear infinite;
+  animation: marqueeReverse 70s linear infinite;
+} */
+
+/* @keyframes marqueeReverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
-/* Pause animasi saat kursor mouse di-hover di atas logo */
-/* .animate-marquee-reverse:hover {
-  animation-play-state: paused;
+.animate-marquee-reverse {
+  animation: marqueeReverse 70s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 } */
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marqueeReverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marqueeReverse 35s linear infinite;
+  will-change: transform;
+}
+
 
 .bg-primary {
   background-color: var(--n-primary);
 }
 
+.bg-primary-light {
+  background-color: var(--n-primary-light);
+}
 .bg-secondary {
   background-color: var(--n-secondary);
 }

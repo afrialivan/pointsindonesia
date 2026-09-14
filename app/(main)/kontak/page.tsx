@@ -26,7 +26,7 @@ export default function ContactPage() {
     setTimeout(() => {
       setStatus('success');
       window.open(`https://wa.me/6282128787270?text=${whatsappMessage}`, '_blank');
-      
+
       setTimeout(() => {
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setStatus('idle');
@@ -37,7 +37,7 @@ export default function ContactPage() {
   const contactCards = [
     {
       title: 'WhatsApp & Telepon',
-      detail: '+6282128787270',
+      detail: ['+62 821-2878-7270 (Admin 1)', '+62 823-5553-4970 (Admin 2)'],
       sub: 'Respon cepat jam kerja (09.00 - 18.00 WITA)',
       href: 'https://wa.me/6282128787270',
       icon: (
@@ -97,7 +97,7 @@ export default function ContactPage() {
               HUBUNGI KAMI
             </span>
             <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#0B1437] leading-[1.15] tracking-tight mb-6">
-              Diskusi &amp; Konsultasi <span className="text-[#155EEF]">Proyek Anda</span>
+              Diskusi &amp; Konsultasi <span className="text-[#155EEF]">Project Kamu</span>
             </h1>
             <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
               Punya pertanyaan seputar sampel bahan, perkiraan biaya, atau alur pengerjaan? Tim Points Indonesia siap membantu kebutuhan Anda.
@@ -109,9 +109,9 @@ export default function ContactPage() {
       {/* 2. CONTACT CARDS & FORM SECTION */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-            
+
             {/* Sisi Kiri: Informasi Kontak */}
             <div className="flex flex-col justify-between space-y-6">
               <div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                   Mari Terhubung
                 </h2>
                 <p className="text-[#667085] text-sm leading-relaxed">
-                  Kunjungi workshop kami secara langsung di Makassar atau hubungi melalui saluran komunikasi resmi di bawah ini.
+                  Kunjungi Toko dan Kantor kami secara langsung di Makassar atau hubungi melalui saluran komunikasi resmi di bawah ini.
                 </p>
               </div>
 
@@ -145,11 +145,19 @@ export default function ContactPage() {
                           {card.title}
                         </span>
                         <span className="block font-display font-semibold text-sm sm:text-base text-[#155EEF] truncate my-0.5">
-                          {card.detail}
+                          {card.detail.length === 2 ?
+                            (<>
+                              <div>
+                                {card.detail[0]}
+                              </div>
+                              <div>
+                                {card.detail[1]}
+                              </div>
+                            </>) : card.detail}
                         </span>
-                        <span className="block text-[11px] sm:text-xs text-[#667085]">
+                        {/* <span className="block text-[11px] sm:text-xs text-[#667085]">
                           {card.sub}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </motion.a>
@@ -257,7 +265,7 @@ export default function ContactPage() {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={status !== 'idle'}
-                    className="w-full font-display font-semibold text-sm text-white px-6 py-3.5 rounded-xl bg-linear-to-r from-[#155EEF] to-[#6941C6] shadow-[0_8px_20px_rgba(21,94,239,0.25)] hover:shadow-[0_12px_28px_rgba(21,94,239,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-2 disabled:opacity-50 mt-2"
+                    className="w-full font-display font-semibold text-sm text-white px-6 py-3.5 rounded-xl bg-primary shadow-[0_8px_20px_rgba(21,94,239,0.25)] hover:shadow-[0_12px_28px_rgba(21,94,239,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-2 disabled:opacity-50 mt-2"
                   >
                     {status === 'submitting' ? (
                       'Menghubungkan ke WhatsApp...'

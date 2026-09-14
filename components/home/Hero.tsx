@@ -14,16 +14,16 @@ export default function Hero() {
   const slides: Slide[] = [
     {
       id: 1,
-      bgImage: '/dummy/dummy-carousel.png',
+      bgImage: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789403478/points-indonesia.jpg',
     },
-    {
-      id: 2,
-      bgImage: '/dummy/dummy-carousel2.png',
-    },
-    {
-      id: 3,
-      bgImage: '/dummy/dummy-carousel3.png',
-    },
+    // {
+    //   id: 2,
+    //   bgImage: '/dummy/dummy-carousel2.png',
+    // },
+    // {
+    //   id: 3,
+    //   bgImage: '/dummy/dummy-carousel3.png',
+    // },
   ];
 
   // Auto-play (5 detik)
@@ -48,7 +48,7 @@ export default function Hero() {
       1. flex justify-center w-full : Memaksa elemen di dalamnya selalu berada tepat di tengah layar
       2. px-4 sm:px-6 lg:px-8 : Memberikan jarak/margin aman di kanan-kiri agar tidak menempel ke tepi layar
     */
-    <div className="w-full flex justify-center px-4 sm:px-6 lg:px-28 mt-16 md:mt-12 lg:mt-22.5">
+    <div className="w-full flex justify-center px-4 sm:px-6 lg:px-24 mt-16 md:mt-12 lg:mt-22.5">
       
       {/* 
         CONTAINER CAROUSEL:

@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 
 export default function HeroText() {
-  // Menentukan tipe Variants eksplisit agar aman dari galat TypeScript
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,14 +25,45 @@ export default function HeroText() {
     },
   };
 
+  const phoneNumber = '6282128787270';
+  const defaultMessage = encodeURIComponent(
+    'Halo Points Indonesia, saya ingin konsultasi mengenai pemesanan konveksi/apparel.'
+  );
+  const waLink = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
+
+  // Daftar slide gambar di sisi kanan (gunakan dummy.png Anda)
+  const productSlides = [
+    { id: 1, imgSrc: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789323795/portofolio/kaos/5.webp', alt: 'Points Indonesia' },
+    { id: 2, imgSrc: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789323862/portofolio/workshirt-polo/12.webp', alt: 'Points Indonesia' },
+    { id: 3, imgSrc: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789323785/portofolio/jersey/5.webp', alt: 'Points Indonesia' },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto play slider setiap 4 detik
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % productSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [productSlides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % productSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? productSlides.length - 1 : prev - 1));
+  };
+
   return (
-    <section className="relative py-16 sm:py-24 bg-[#F4F7FF] overflow-hidden">
+    <section className="relative py-12 sm:py-20 lg:py-24 bg-[#F4F7FF] overflow-hidden">
       {/* Background Glows */}
-      <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-125 h-125 bg-[radial-gradient(circle,rgba(21,94,239,0.15)_0%,transparent_70%)] pointer-events-none blur-2xl" />
-      <div className="absolute bottom-0 left-[10%] w-87.5 h-87.5 bg-[radial-gradient(circle,rgba(105,65,198,0.08)_0%,transparent_70%)] pointer-events-none blur-3xl" />
+      <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-96 h-96 sm:w-125 sm:h-125 bg-[radial-gradient(circle,rgba(21,94,239,0.15)_0%,transparent_70%)] pointer-events-none blur-2xl" />
+      <div className="absolute bottom-0 left-[10%] w-72 h-72 sm:w-87.5 sm:h-87.5 bg-[radial-gradient(circle,rgba(105,65,198,0.08)_0%,transparent_70%)] pointer-events-none blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* SISI KIRI: Headline & Call To Action */}
           <motion.div
@@ -42,175 +73,114 @@ export default function HeroText() {
             viewport={{ once: true, margin: '-50px' }}
             className="lg:col-span-7 text-left"
           >
-
             {/* Title */}
             <motion.h1
               variants={itemVariants}
-              className="font-display font-extrabold text-3xl sm:text-5xl lg:text-5xl text-[#0B1437] leading-[1.15] tracking-tight mb-6"
+              className="font-display font-extrabold text-xl sm:text-2xl lg:text-5xl text-[#0B1437] leading-[1.15] tracking-tight mb-4 sm:mb-6"
             >
               Hadir untuk Menjawab Berbagai{' '}
               <span className="text-primary-light bg-clip-text">
-                Kebutuhan Anda
+                Kebutuhan Seragam Anda
               </span>.
             </motion.h1>
 
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-[#667085] leading-relaxed mb-8 max-w-2xl"
+              className="text-sm sm:text-lg text-[#667085] leading-relaxed mb-6 sm:mb-8 max-w-2xl"
             >
               CV. Points Sukses Indonesia dengan merek dagang <strong className="text-[#0B1437]">Points Indonesia</strong> adalah
               perusahaan percetakan apparel, konveksi &amp; merchandise yang berfokus
               pada kebutuhan klien, dengan harga yang kompetitif, kualitas yang
               terjamin, dan pelayanan yang memuaskan. Berdiri sejak 2019, kami
-              hadir berfokus untuk menjadi solusi percetakan apparel dan konveksi di Sulawesi Selatan.
+              hadir berfokus untuk menjadi solusi percetakan apparel dan konveksi di Indonesia Timur.
             </motion.p>
 
-            {/* Action Buttons */}
+            {/* Action Button */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/cara-order"
-                  className="font-display font-semibold text-base text-white px-7 py-3.5 rounded-xl bg-primary shadow-[0_12px_28px_rgba(21,94,239,0.28)] hover:shadow-[0_16px_36px_rgba(21,94,239,0.38)] transition-all duration-200 inline-flex items-center gap-2.5"
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-display font-semibold text-sm sm:text-base text-white px-7 py-3.5 rounded-xl bg-primary shadow-[0_12px_28px_rgba(21,94,239,0.28)] hover:shadow-[0_16px_36px_rgba(21,94,239,0.38)] transition-all duration-200 inline-flex items-center gap-2.5"
                 >
-                  Mulai Project Anda
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/pricelist"
-                  className="font-display font-semibold text-base text-[#0B1437] px-7 py-3.5 rounded-xl bg-white border border-[#E4E7EC] hover:bg-[#F7F9FC] hover:border-[#155EEF]/30 transition-all duration-200 block shadow-sm"
-                >
-                  Pelayanan Kami
-                </Link>
+                  Konsultasikan Project Kamu
+                  
+                </a>
               </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* SISI KANAN: DIGITAL APPAREL VISUALIZER ANIMATION */}
+          {/* SISI KANAN: CAROUSEL GAMBAR HASIL PRODUK (RESPONSIVE) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="lg:col-span-5 flex justify-center items-center relative"
+            className="lg:col-span-5 flex justify-center items-center w-full"
           >
-            <div className="w-full max-w-md bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/80 shadow-[0_20px_50px_rgba(11,20,55,0.08)] relative overflow-visible">
+            <div className="relative w-full max-w-lg aspect-[3/4] rounded-3xl bg-white p-3 sm:p-4 border border-[#E4E7EC] shadow-[0_20px_50px_rgba(11,20,55,0.08)] overflow-hidden group">
               
-              {/* Floating Badge Top-Right: Material Swatch */}
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-4 -right-2 z-30 bg-white border border-[#E4E7EC] px-3.5 py-2 rounded-2xl shadow-lg flex items-center gap-2.5"
-              >
-                <div className="flex -space-x-1.5">
-                  <span className="w-4 h-4 rounded-full bg-[#155EEF] border-2 border-white" />
-                  <span className="w-4 h-4 rounded-full bg-[#0B1437] border-2 border-white" />
-                  <span className="w-4 h-4 rounded-full bg-[#FFDE00] border-2 border-white" />
-                </div>
-                <div>
-                  <span className="block font-display font-bold text-xs text-[#0B1437]">Kain Premium</span>
-                </div>
-              </motion.div>
-
-              {/* Floating Badge Bottom-Left: Custom Logo & Embroidery */}
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-4 -left-3 z-30 bg-[#0B1437] text-white px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 border border-white/10"
-              >
-                <div className="w-7 h-7 rounded-xl bg-[#155EEF] flex items-center justify-center font-extrabold text-[10px] text-white">
-                  DTF
-                </div>
-                <div>
-                  <span className="block font-display font-semibold text-xs tracking-wide text-white">
-                    Sablon &amp; Bordir
-                  </span>
-                  <span className="block text-[9px] text-white/70">Presisi Tinggi &amp; Tahan Lama</span>
-                </div>
-              </motion.div>
-
-              {/* Stage Visualizer Box */}
-              <div className="relative w-full h-64 bg-linear-to-b from-[#F7F9FC] to-[#EEF2FF] rounded-2xl border border-[#E4E7EC]/80 overflow-hidden flex items-center justify-center p-4">
-                
-                {/* Sinar Pemindai Laser Precision (Moving Scan Line) */}
-                <motion.div
-                  animate={{ y: [-110, 110, -110] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute left-0 right-0 h-1 bg-linear-to-r from-transparent via-[#155EEF] to-transparent z-20 shadow-[0_0_12px_#155EEF]"
-                />
-
-                {/* Display Hanger & Main Clothes Render */}
-                <div className="relative flex flex-col items-center">
-                  
-                  {/* Metallic Hanger Bar */}
-                  <div className="w-12 h-6 border-t-2 border-r-2 border-[#0B1437] rounded-tr-full -mb-1 relative z-10" />
-
-                  {/* Apparel Item: Kemeja Custom PDH / Apparel */}
-                  <motion.div
-                    animate={{ rotate: [-1.5, 1.5, -1.5], scale: [1, 1.02, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-44 h-48 bg-white rounded-b-3xl shadow-xl border-2 border-[#155EEF] relative overflow-hidden flex flex-col items-center pt-3 px-3 z-10"
-                  >
-                    {/* Collar & Buttons */}
-                    <div className="w-12 h-4 bg-[#EEF2FF] border-b-2 border-[#155EEF] rounded-b-lg mb-2 flex justify-center items-center">
-                      <div className="w-1 h-1 rounded-full bg-[#155EEF]" />
-                    </div>
-
-                    {/* Pocket & Logo Badge */}
-                    <div className="w-full flex justify-between items-start px-2 mb-2">
-                      <div className="w-7 h-8 bg-[#EEF2FF] rounded-b-md border border-[#155EEF]/30 flex items-center justify-center">
-                        <span className="text-[7px] font-bold text-[#155EEF]">LOGO</span>
-                      </div>
-                      <div className="w-6 h-3 bg-[#FFDE00] rounded-sm flex items-center justify-center">
-                        <span className="text-[6px] font-black text-[#0B1437]">POINTS</span>
-                      </div>
-                    </div>
-
-                    {/* Main Printing Graphics on Shirt */}
-                    <div className="w-24 h-16 bg-[#EEF2FF]/60 rounded-xl border border-dashed border-[#155EEF]/40 flex flex-col items-center justify-center p-1">
-                      <span className="text-[9px] font-extrabold text-[#0B1437] tracking-wider">CUSTOM APPAREL</span>
-                      <span className="text-[7px] text-[#155EEF] font-semibold">ONE STOP CONVECTION</span>
-                    </div>
-                  </motion.div>
-
-                </div>
-
-                {/* Karakter Pembeli / Seseorang Mengamati Baju */}
-                <motion.div
-                  animate={{ x: [-12, 12, -12] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute bottom-1 right-4 z-30 flex flex-col items-center pointer-events-none"
-                >
-                  {/* Kepala & Pandangan Menatap Baju */}
-                  <div className="w-10 h-10 rounded-full bg-[#0B1437] relative flex items-center justify-center shadow-md border-2 border-white">
+              {/* Image Frame */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#EEF2FF]">
+                {productSlides.map((slide, index) => {
+                  const isActive = index === currentSlide;
+                  return (
                     <motion.div
-                      animate={{ x: [-2, 2, -2] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="flex items-center gap-1"
+                      key={slide.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: isActive ? 1 : 0 }}
+                      transition={{ duration: 0.7, ease: 'easeInOut' }}
+                      className={`absolute inset-0 w-full h-full ${
+                        isActive ? 'z-10' : 'z-0 pointer-events-none'
+                      }`}
                     >
-                      <div className="w-2 h-2 rounded-full bg-[#FFDE00]" />
-                      <div className="w-2 h-2 rounded-full bg-[#FFDE00]" />
+                      <Image
+                        src={slide.imgSrc}
+                        alt={slide.alt}
+                        fill
+                        priority={index === 0}
+                        className="object-cover w-full h-full"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
                     </motion.div>
-                  </div>
-
-                  {/* Body Contour (Penyesuaian class Tailwind standar) */}
-                  <div className="w-12 h-10 bg-linear-to-t from-[#0B1437] to-[#155EEF] rounded-t-2xl border-t-2 border-white/30" />
-                </motion.div>
-
+                  );
+                })}
               </div>
 
-              {/* Text Subtitle */}
-              <div className="mt-4 text-center">
-                <span className="font-display font-bold text-sm text-[#0B1437] block">
-                  Bebas Konsultasi Bahan &amp; Desain Custom
-                </span>
-                <span className="text-xs text-[#667085] block mt-0.5">
-                  Mewujudkan Pakaian &amp; Seragam Sesuai Keinginan Anda
-                </span>
+              {/* Navigation Arrows (Tampil saat di-hover/di-sentuh) */}
+              <button
+                onClick={prevSlide}
+                aria-label="Previous Slide"
+                className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 border border-white/20"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                onClick={nextSlide}
+                aria-label="Next Slide"
+                className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-80 sm:opacity-0 group-hover:opacity-100 border border-white/20"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Indicators Dots */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                {productSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? 'w-7 bg-[#155EEF]' : 'w-2 bg-white/60'
+                    }`}
+                  />
+                ))}
               </div>
 
             </div>

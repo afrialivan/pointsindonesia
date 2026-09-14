@@ -96,7 +96,7 @@ export default function NotFound() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="/"
-                className="font-display font-semibold text-base text-white px-8 py-4 rounded-xl bg-linear-to-r from-[#155EEF] to-[#6941C6] shadow-[0_12px_28px_rgba(21,94,239,0.35)] hover:shadow-[0_16px_32px_rgba(21,94,239,0.45)] transition-all duration-200 inline-flex items-center gap-2.5"
+                className="font-display font-semibold text-base text-white px-8 py-4 rounded-xl bg-primary-light shadow-[0_12px_28px_rgba(21,94,239,0.35)] hover:shadow-[0_16px_32px_rgba(21,94,239,0.45)] transition-all duration-200 inline-flex items-center gap-2.5"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
@@ -105,19 +105,6 @@ export default function NotFound() {
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <a
-                href="https://wa.me/6282345555423?text=Halo%20Points%20Indonesia,%20saya%20mengalami%20kendala%20saat%20membuka%20halaman%20website."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-display font-semibold text-base text-white/90 px-8 py-4 rounded-xl bg-white/10 border border-white/15 hover:bg-white/20 transition-all duration-200 inline-flex items-center gap-2.5"
-              >
-                Hubungi Bantuan
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-            </motion.div>
           </motion.div>
 
         </div>

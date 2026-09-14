@@ -9,7 +9,7 @@ export default function OrderProcessPage() {
   const faqs = [
     {
       q: 'Berapa minimal order (MOQ) di Points Indonesia?',
-      a: 'Minimal order tergantung jenis produk. Untuk sablon custom dan kaos umumnya mulai dari 12–24 pcs, sedangkan seragam PDH/PDL atau jaket berkisar 12 pcs. Silakan konsultasikan kebutuhan Anda via WhatsApp.',
+      a: 'Minimal order tergantung jenis produk. Untuk sablon custom dan kaos umumnya mulai dari 12–24 pcs, sedangkan seragam PDH/PDL atau jaket berkisar 12 pcs. Silakan konsultasikan kebutuhan Kamu via WhatsApp.',
     },
     {
       q: 'Apakah bisa dibuatkan sampel (sample produk) terlebih dahulu?',
@@ -17,7 +17,7 @@ export default function OrderProcessPage() {
     },
     {
       q: 'Berapa lama durasi pengerjaan pesanan?',
-      a: 'Waktu produksi standar berkisar 1–2 minggu tergantung jumlah antrean dan kompleksitas desain. Jika Anda butuh pengerjaan kilat/express, tim kami siap mendiskusikan opsi jadwalnya.',
+      a: 'Waktu produksi standar berkisar 1–2 minggu tergantung jumlah antrean dan kompleksitas desain. Jika Kamu butuh pengerjaan kilat/express, tim kami siap mendiskusikan opsi jadwalnya.',
     },
     {
       q: 'Bagaimana metode pembayaran di Points Indonesia?',
