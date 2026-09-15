@@ -16,14 +16,14 @@ export default function Hero() {
       id: 1,
       bgImage: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789403478/points-indonesia.jpg',
     },
-    // {
-    //   id: 2,
-    //   bgImage: '/dummy/dummy-carousel2.png',
-    // },
-    // {
-    //   id: 3,
-    //   bgImage: '/dummy/dummy-carousel3.png',
-    // },
+    {
+      id: 2,
+      bgImage: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789468906/points-indonesia-1.jpg',
+    },
+    {
+      id: 3,
+      bgImage: 'https://res.cloudinary.com/wxjrbpho/image/upload/v1789468906/points-indonesia-2.jpg',
+    },
   ];
 
   // Auto-play (5 detik)
