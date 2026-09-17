@@ -95,7 +95,7 @@ export default function AboutPage() {
                 variants={itemVariants}
                 className="text-[#0B1437] font-semibold text-base sm:text-lg lg:text-xl leading-relaxed"
               >
-                <strong className="text-[#155EEF]">CV. POINTS SUKSES INDONESIA</strong> dengan merek dagang <strong className="text-[#0B1437]">Points Indonesia</strong> adalah sebuah Perusahaan yang fokus bergerak dalam bidang industri percetakan apparel, konveksi, dan merchandise. Points Indonesiaresmi beroperasi sejak 2019.
+                <strong className="text-[#155EEF]">CV. POINTS SUKSES INDONESIA</strong> dengan merek dagang <strong className="text-[#0B1437]">Points Indonesia</strong> adalah sebuah Perusahaan yang fokus bergerak dalam bidang industri percetakan apparel, konveksi, dan merchandise. Points Indonesia resmi beroperasi sejak 2019.
               </motion.p>
 
               <motion.p

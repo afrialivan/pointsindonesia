@@ -8,8 +8,8 @@ import CtaSection from '@/components/home/CtaSection';
 export default function OrderProcessPage() {
   const faqs = [
     {
-      q: 'Berapa minimal order (MOQ) di Points Indonesia?',
-      a: 'Minimal order tergantung jenis produk. Untuk sablon custom dan kaos umumnya mulai dari 12–24 pcs, sedangkan seragam PDH/PDL atau jaket berkisar 12 pcs. Silakan konsultasikan kebutuhan Kamu via WhatsApp.',
+      q: 'Berapa minimal order di Points Indonesia?',
+      a: 'Minimal order tergantung jenis produk. Untuk pemesanan kaos dan PDH dapat dipesan tanpa minimum order. Silakan konsultasikan kebutuhan Kamu via WhatsApp.',
     },
     {
       q: 'Apakah bisa dibuatkan sampel (sample produk) terlebih dahulu?',

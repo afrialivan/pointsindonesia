@@ -76,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="id" className={`${inter.variable} ${sora.variable}`} data-scroll-behavior="smooth">
       <body className="font-sans text-[#667085] bg-white antialiased selection:bg-[#155EEF] selection:text-white">
         {children}
       </body>

@@ -8,7 +8,7 @@ export default function PricelistPage() {
   return (
     <main className="lg:pt-22.5 pt-10 bg-white">
       <PricelistHero category='Konveksi' />
-      <PdfViewerSection pdfUrl={PDF_URL} />
+      <PdfViewerSection pdfUrl={PDF_URL} totalPages={17} />
       <CtaSection />
     </main>
   );

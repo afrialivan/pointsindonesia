@@ -1,6 +1,6 @@
 const Testing = () => {
   return (
-    <div>v10 update pricelist docs pakai claudinary dan dinamis title</div>
+    <div>v15 update pdf ke image</div>
   )
 }
 
